@@ -1,0 +1,49 @@
+{% extends '../layouts/default.html' %}
+
+{% block main %}
+  <h1>{{ title }}</h1>
+  <hr>
+{% endblock %}
+
+{% block content %}
+
+  <div class="row">
+    <div class="col-md-8">
+      <form method="post" action="/questions" enctype="multipart/form-data" role="form" class="form-horizontal">
+
+        <input type="hidden" name="_csrf" value="{{ csrf_token }}">
+
+
+        <div class="form-group">
+          <label for="username" class="col-sm-2 control-label">Username</label>
+          <div class="col-sm-10">
+            <input type="text" name="username" value="{{ question.username }}" placeholder="Enter the username" class="form-control" id="username" required>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="title" class="col-sm-2 control-label">Title</label>
+          <div class="col-sm-10">
+            <input type="text" name="title" value="{{ question.title }}" placeholder="Enter the title" class="form-control" id="title" required>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="desc" class="col-sm-2 control-label">Body</label>
+          <div class="col-sm-10">
+            <textarea rows="5" name="body" placeholder="Enter the question description" id="desc" cols="30" rows="10" class="form-control" required>{{ question.body }}</textarea>
+          </div>
+        </div>
+
+
+        <div class="form-group">
+          <div class="col-sm-offset-2 col-sm-10">
+            <button class="btn btn-primary" type="submit">Save</button>
+            &nbsp;
+            <a href="/questions" class="btn btn-link">Cancel</a>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+{% endblock %}

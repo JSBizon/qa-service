@@ -1,0 +1,13 @@
+
+{% if (answer) %}
+  <div class="answer">
+
+    <p>{{ answer.body }}</p>
+
+    <span class="muted">{{ answer.createdAt.toISOString()|date('M d, Y  h:i a') }}</span>
+
+    &nbsp; - &nbsp;
+    <span>Author: <b>{{ answer.username }} </b></span>
+
+  </div>
+{% endif %}

@@ -1,0 +1,55 @@
+{% extends '../layouts/default.html' %}
+
+{% block main %}
+  <h1>{{ question.title }}</h1>
+{% endblock %}
+
+{% block content %}
+  <div class="row">
+    <div class="col-md-8">
+      <p>{{ question.body }}</p>
+      <div class="meta">
+          Author: &nbsp; <b>{{ question.username }}</b>
+        <span class="muted">{{ question.createdAt.toISOString()|date('M d, Y  h:i a') }}</span>
+      </div>
+    </div>
+  </div>
+
+  <br>
+  <h3>Answers</h3>
+  {% for answer in question.answers %}
+    {% include '../answers/answer.html' %}
+  {% endfor %}
+
+  {% if ! question.answers.length %}
+    <div style="text-align: center;">No answers</div>
+    <hr>
+  {% endif %}
+  <br/>
+<form method="post" class="form-horizontal" action="{{ '/questions/' + question._id + '/answers' }}" role="form">
+  <input type="hidden" name="_csrf" value="{{ csrf_token }}">
+
+    <div class="form-group">
+        <label for="username" class="col-sm-2 control-label">Username</label>
+        <div class="col-sm-10">
+            <input type="text" name="username" value="" placeholder="Enter the username" class="form-control" id="username" required>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="desc" class="col-sm-2 control-label">Answer</label>
+        <div class="col-sm-10">
+            <textarea rows="5" name="body" placeholder="Enter the question description" id="desc" cols="30" rows="10" class="form-control" required></textarea>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button class="btn btn-primary" type="submit">Add answer</button>
+
+        </div>
+    </div>
+
+</form>
+
+{% endblock %}

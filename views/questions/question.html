@@ -1,0 +1,14 @@
+<div class="question">
+  <h3>
+    <a href="{{ '/questions/' + question._id }}" title="{{ question.title }}">
+      {{ question.title }}
+    </a>
+  </h3>
+  <p>{{ question.body }}</p>
+
+  <span class="muted">{{ question.createdAt.toISOString()|date('M d, Y  h:i a') }}</span>
+
+    &nbsp; - &nbsp;
+    <span>Author: <b>{{ question.username }}</b> |
+    <a href="{{ '/questions/' + question._id }}">Answers: </a>{{ question.answers.length }}</span>
+</div>

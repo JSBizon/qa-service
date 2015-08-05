@@ -1,0 +1,22 @@
+{% extends '../layouts/default.html' %}
+
+
+{% block main %}
+    <div class="filters">
+        <a href="/"> all </a> | <a href="/?answered=1">answered</a> | <a href="/?not_answered=1">not answered</a>
+    </div>
+    <h1>{{ title }}</h1>
+{% endblock %}
+
+{% block content %}
+    {% if (questions.length) %}
+        {% for question in questions %}
+            {% include 'question.html' %}
+        {% endfor %}
+    {% else %}
+    <h4 class="muted">
+      No questions.&nbsp;
+      <a href="/questions/new">create one</a>
+    </h4>
+    {% endif %}
+{% endblock %}
