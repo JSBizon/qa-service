@@ -7,7 +7,7 @@ var mongoose = require('mongoose');
 var config = require('config');
 
 var app = express();
-var port = 3000;
+var port = process.env.PORT || 3000;
 
 // Connect to mongodb
 var connect = function() {
