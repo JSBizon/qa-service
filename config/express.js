@@ -4,14 +4,11 @@ var express = require('express');
 var compression = require('compression');
 var morgan = require('morgan');
 var cookieParser = require('cookie-parser');
-var cookieSession = require('cookie-session');
 var bodyParser = require('body-parser');
-var methodOverride = require('method-override');
 var csrf = require('csurf');
 var multer = require('multer');
 var swig = require('swig');
-
-var helpers = require('view-helpers');
+var methodOverride = require('method-override');
 var pkg = require('../package.json');
 var config = require('config');
 
